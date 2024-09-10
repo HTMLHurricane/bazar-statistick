@@ -19,7 +19,7 @@ const dontPayApi = rtkApi.injectEndpoints({
         }),
         deleteDontPay: build.mutation<unknown, string>({
             query: (number) => ({
-                url: `exception-nums/?number=${number}`,
+                url: `exception-nums/${number}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['car'],
