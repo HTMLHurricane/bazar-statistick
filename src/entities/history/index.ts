@@ -1,0 +1,1 @@
+export type {HistorySchema} from './model/types/historyType'
