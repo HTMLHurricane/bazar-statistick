@@ -17,8 +17,16 @@ const dontPayApi = rtkApi.injectEndpoints({
             }),
             providesTags: ['car'],
         }),
+        deleteDontPay: build.mutation<unknown, string>({
+            query: (number) => ({
+                url: `exception-nums/?number=${number}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['car'],
+        }),
     }),
 });
 
 export const useCreateDontPay = dontPayApi.useCreateDontPayMutation;
 export const useGetDontPayCars = dontPayApi.useGetDontPayCarsQuery;
+export const useDeleteDontPay = dontPayApi.useDeleteDontPayMutation;

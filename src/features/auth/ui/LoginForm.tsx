@@ -33,14 +33,14 @@ export const LoginForm = () => {
     }, [isError, isSuccess, data, triggerGetMe, navigate, form]);
 
     return (
-        <div className="w-full min-h-screen flex items-center justify-center">
-            <div className="w-[400px]">
-                <h1 className="text-center mb-5">Авторизация</h1>
+        <div className="w-full min-h-screen flex items-center justify-center px-4">
+            <div className="w-full max-w-md">
+                <h1 className="text-center mb-5 text-2xl font-semibold">Авторизация</h1>
                 <Form
                     name="basic"
                     onFinish={onFinish}
                     form={form}
-                    style={{ width: 400 }}
+                    style={{ width: '100%' }}
                     onFinishFailed={(errorInfo) =>
                         console.log('Failed:', errorInfo)
                     }

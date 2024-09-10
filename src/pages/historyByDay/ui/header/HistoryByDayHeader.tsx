@@ -5,7 +5,7 @@ import { Button } from 'antd';
 
 export const HistoryByDayHeader = ({ date }: { date: string }) => {
     const downloadFile = () => {
-        const url = `http://37.140.216.89:1111/export-data/report/?date=${date}`;
+        const url = `https://bazar-api.aralhub.uz/export-data/report/?date=${date}`;
         window.location.href = url;
     };
 

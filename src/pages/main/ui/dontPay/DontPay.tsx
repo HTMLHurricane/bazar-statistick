@@ -1,14 +1,20 @@
 import { DontPayResponse } from '@/entities/dontPay/model/types/dontPayTypes';
-import { Button, Card, Table, TableProps, Modal } from 'antd';
+import { Button, Card, Table, TableProps, Modal, message } from 'antd';
 import { CreateDontPay } from '@/features/createDontPay';
-import { useGetDontPayCars } from '@/entities/dontPay/api/dontPayApi';
+import {
+    useDeleteDontPay,
+    useGetDontPayCars,
+} from '@/entities/dontPay/api/dontPayApi';
 import { useMainActions } from '@/entities/main/model/slice/mainSlice';
 import { useGetIsModalVisible } from '@/entities/main/model/selectors/mainSelectors';
+import { DeleteButton } from '@/shared/ui';
+import { useEffect } from 'react';
 
 export const DontPay = () => {
     const isModalVisible = useGetIsModalVisible();
     const { setIsModalVisible } = useMainActions();
     const { data } = useGetDontPayCars();
+    const [deleteDontPay, { isSuccess }] = useDeleteDontPay();
     const showModal = () => {
         setIsModalVisible(true);
     };
@@ -29,9 +35,18 @@ export const DontPay = () => {
                 </div>
             ),
             dataIndex: 'options',
+            render: (_, rec) => (
+                <div className="flex justify-center">
+                    <DeleteButton onConfirm={() => deleteDontPay(rec.number)} />
+                </div>
+            ),
         },
     ];
-
+    useEffect(() => {
+        if (isSuccess) {
+            message.success('Успешно удалено');
+        }
+    }, [isSuccess]);
     return (
         <>
             <Card

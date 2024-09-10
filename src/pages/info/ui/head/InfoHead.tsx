@@ -15,20 +15,18 @@ export const InfoHead = () => {
             setDateMonthInfo(dateString);
         }
     };
-
     return (
-        <FlexBox cls="justify-between items-center flex-wrap gap-4">
-            <Button onClick={() => navigate(-1)} type="primary" className="mb-2 sm:mb-0">
+        <FlexBox cls="justify-between">
+            <Button onClick={() => navigate(-1)} type="primary">
                 Назад
             </Button>
-            <FlexBox cls="flex-grow justify-center sm:justify-end">
+            <FlexBox>
                 <DatePicker
                     allowClear={false}
                     picker="month"
                     onChange={onChange}
                     placeholder="Выберите месяц"
-                    style={{ width: '100%', maxWidth: '200px' }}
-                    className="w-full sm:w-auto"
+                    style={{ width: 200 }}
                 />
             </FlexBox>
         </FlexBox>

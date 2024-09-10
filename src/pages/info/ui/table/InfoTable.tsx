@@ -79,7 +79,6 @@ export const InfoTable = () => {
             ),
         },
     ];
-
     return (
         <Card
             title="Информация о машине за месяц"
@@ -110,7 +109,7 @@ export const InfoTable = () => {
                 }}
                 rowKey={(rec) => rec.date}
                 className="w-full"
-                scroll={{ x: '100%' }} // Гибкая прокрутка для избежания горизонтальных скроллов
+                scroll={{ x: true }}
             />
         </Card>
     );

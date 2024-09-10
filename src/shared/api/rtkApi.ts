@@ -4,7 +4,7 @@ import { TOKEN } from '@/shared/const/localstorage';
 export const rtkApi = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://37.140.216.89:1111/',
+        baseUrl: 'https://bazar-api.aralhub.uz/',
         prepareHeaders: (headers) => {
             const token = localStorage.getItem(TOKEN) || '';
             if (token) {

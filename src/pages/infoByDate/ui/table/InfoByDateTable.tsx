@@ -1,6 +1,8 @@
 import { useGetInfoByDate } from '@/entities/infoByDate/api/infoByDateApi';
 import { InfoByDateResponse } from '@/entities/infoByDate/model/infoByDateType';
-import { Card, Table, TableProps, Image } from 'antd';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Card, Table, TableProps, Image, Button } from 'antd';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -14,6 +16,10 @@ export const InfoByDateTable = () => {
         date,
         car_number: id,
     });
+    const downloadFile = () => {
+        const url = `https://bazar-api.aralhub.uz/export-data/car?date=${date}&car_number=${id}`;
+        window.location.href = url;
+    };
     const columns: TableProps<InfoByDateResponse>['columns'] = [
         {
             title: 'Время',
@@ -34,6 +40,16 @@ export const InfoByDateTable = () => {
                     />
                 </>
             ),
+        },
+        {
+            title: (
+                <Button onClick={downloadFile}>
+                    <FontAwesomeIcon icon={faArrowDown} />
+                    скачать
+                </Button>
+            ),
+            dataIndex: 'download',
+            key: 'download',
         },
     ];
 
