@@ -34,11 +34,12 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
         'monday',
         'tuesday',
         'wednesday',
-        'thoursday',
+        'thursday', // Исправление опечатки
         'friday',
         'saturday',
         'sunday',
     ];
+
     const sortedData = data?.slice().sort((a: GraphicData, b: GraphicData) => {
         if (filter === 'week' && a.weekday && b.weekday) {
             return (
@@ -66,6 +67,21 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
             },
             tooltip: {
                 callbacks: {
+                    title: function (context: any) {
+                        const currentTime = context[0]?.label;
+                        let interval = currentTime;
+
+                        if (filter === 'day' && currentTime) {
+                            const [hours, minutes] = currentTime.split(':');
+                            const nextHour = String(Number(hours) - 1).padStart(
+                                2,
+                                '0',
+                            );
+                            interval = `${nextHour}:${minutes} - ${hours}:${minutes} `;
+                        }
+
+                        return [interval];
+                    },
                     label: function (context: any) {
                         return `Количество машин: ${context.raw}`;
                     },
@@ -91,8 +107,8 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
                             : 'Дата',
                 },
                 ticks: {
-                    autoSkip: true,
-                    maxTicksLimit: 10,
+                    autoSkip: false, // Отключаем автоматический пропуск
+                    maxTicksLimit: sortedData?.length || 10, // Устанавливаем максимальное количество меток
                 },
             },
         },
