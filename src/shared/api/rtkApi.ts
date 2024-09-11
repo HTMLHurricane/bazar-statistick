@@ -16,4 +16,3 @@ export const rtkApi = createApi({
     tagTypes: ['car'],
     endpoints: () => ({}),
 });
-``
