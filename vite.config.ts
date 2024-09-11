@@ -11,9 +11,4 @@ export default defineConfig({
             '@': '/src',
         },
     },
-    // build: {
-    //     rollupOptions: {
-    //         external: ['@fortawesome/fontawesome-svg-core'],
-    //     },
-    // },
 });
