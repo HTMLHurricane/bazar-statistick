@@ -1,6 +1,8 @@
 import { faCar, faRepeat } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Card } from 'antd';
+import { useState, useEffect } from 'react';
+import CountUp from 'react-countup';
 
 interface CarStatisticsDoughnutChartProps {
     count: number | undefined;
@@ -13,6 +15,14 @@ const CarStatisticsDoughnutChart = ({
     title,
     flag,
 }: CarStatisticsDoughnutChartProps) => {
+    const [prevCount, setPrevCount] = useState<number>(0);
+
+    useEffect(() => {
+        if (count !== undefined) {
+            setPrevCount(count);
+        }
+    }, [count]);
+
     return (
         <Card
             title={
@@ -39,7 +49,13 @@ const CarStatisticsDoughnutChart = ({
             className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full md:w-3/4 lg:w-full"
         >
             <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center py-6 md:py-8 lg:py-12 xl:py-16">
-                {count ? count : 0}
+                <CountUp
+                    start={prevCount}
+                    end={count ? count : 0}
+                    duration={3}
+                    useEasing={true}
+                    separator=","
+                />
             </div>
         </Card>
     );
