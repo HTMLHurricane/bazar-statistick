@@ -6,6 +6,10 @@ const mainApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
         getCarDay: build.query<AttendanceResponse, IParams>({
             query: (params) => ({
+                cacheTime: 60000,
+                refetchOnMountOrArgChange: true,
+                refetchOnFocus: true,
+                refetchOnReconnect: true,
                 url: 'car/day',
                 method: 'GET',
                 params: {
@@ -16,6 +20,10 @@ const mainApi = rtkApi.injectEndpoints({
         }),
         getCarWeek: build.query<AttendanceResponse, IParams>({
             query: (params) => ({
+                cacheTime: 60000,
+                refetchOnMountOrArgChange: true,
+                refetchOnFocus: true,
+                refetchOnReconnect: true,
                 url: 'car/week',
                 method: 'GET',
                 params: {
@@ -26,6 +34,10 @@ const mainApi = rtkApi.injectEndpoints({
         }),
         getCarMonth: build.query<AttendanceResponse, IParams>({
             query: (params) => ({
+                cacheTime: 60000,
+                refetchOnMountOrArgChange: true,
+                refetchOnFocus: true,
+                refetchOnReconnect: true,
                 url: 'car/month',
                 method: 'GET',
                 params: {

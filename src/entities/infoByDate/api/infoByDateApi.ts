@@ -4,7 +4,7 @@ import { IParams } from '@/shared/types/types';
 
 const infoByDateApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
-        getInfoByDate: build.query<InfoByDateResponse[], IParams>({
+        getInfoByDate: build.query<InfoByDateResponse, IParams>({
             query: (params) => ({
                 url: `car/${params.car_number}`,
                 method: 'GET',

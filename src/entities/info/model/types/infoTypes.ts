@@ -7,6 +7,7 @@ export interface CarEntry {
     first_image: string;
     last_time: string;  
     last_image: string; 
+    overall_count: number;
 }
 
 export interface InfoSchema extends IParams{

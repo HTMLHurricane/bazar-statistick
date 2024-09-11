@@ -78,6 +78,12 @@ export const InfoTable = () => {
                 />
             ),
         },
+        {
+            title: <div className="text-center">Количество заездов</div>,
+            dataIndex: 'overall_count',
+            key: 'overall_count',
+            render: (count) => <div className="text-center">{count}</div>,
+        },
     ];
     return (
         <Card

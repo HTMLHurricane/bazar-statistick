@@ -15,7 +15,7 @@ export const Navbar = memo(() => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredCars, setFilteredCars] = useState<AllCars[]>([]);
-    const { data } = useGetCarDay({ page: 1, limit: 2000 });
+    const { data } = useGetCarDay({ page: 1, limit: 10 });
     const navigate = useNavigate();
     const [logout] = useLogout();
 

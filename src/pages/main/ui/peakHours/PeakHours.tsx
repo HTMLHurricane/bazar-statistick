@@ -30,6 +30,34 @@ interface PeakHoursProps {
 }
 
 const PeakHours = ({ data, filter }: PeakHoursProps) => {
+    const weekdaysOrder = [
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thoursday',
+        'friday',
+        'saturday',
+        'sunday',
+    ];
+    const sortedData = data?.slice().sort((a: GraphicData, b: GraphicData) => {
+        if (filter === 'week' && a.weekday && b.weekday) {
+            return (
+                weekdaysOrder.indexOf(a.weekday) -
+                weekdaysOrder.indexOf(b.weekday)
+            );
+        }
+
+        if (filter === 'month' && a.day && b.day) {
+            return new Date(a.day).getTime() - new Date(b.day).getTime();
+        }
+
+        if (filter === 'day' && a.time && b.time) {
+            return a.time.localeCompare(b.time);
+        }
+
+        return 0;
+    });
+
     const options = {
         responsive: true,
         plugins: {
@@ -55,18 +83,23 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
             x: {
                 title: {
                     display: true,
-                    text: filter === 'day' ? 'Время' : filter === 'week' ? 'День недели' : 'Дата',
+                    text:
+                        filter === 'day'
+                            ? 'Время'
+                            : filter === 'week'
+                            ? 'День недели'
+                            : 'Дата',
                 },
                 ticks: {
                     autoSkip: true,
-                    maxTicksLimit: 10, // Adjust as needed to prevent overcrowding
+                    maxTicksLimit: 10,
                 },
             },
         },
     };
 
     const dataSet = {
-        labels: data?.map((item) =>
+        labels: sortedData?.map((item) =>
             filter === 'day'
                 ? item.time
                 : filter === 'week'
@@ -76,7 +109,7 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
         datasets: [
             {
                 label: 'Количество машин',
-                data: data?.map((item) => item.count),
+                data: sortedData?.map((item) => item.count),
                 borderColor:
                     filter === 'day'
                         ? 'rgba(75, 192, 192, 1)'
@@ -90,7 +123,7 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
                         ? 'rgba(153, 102, 255, 0.2)'
                         : 'rgba(255, 159, 64, 0.2)',
                 fill: true,
-                lineTension: 0.3, // Slight curve for better visual appeal
+                lineTension: 0.3,
             },
         ],
     };

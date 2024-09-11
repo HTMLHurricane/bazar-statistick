@@ -1,8 +1,8 @@
-import { IParams } from '@/shared/types/types'
+import { IParams } from '@/shared/types/types';
 
-export interface MainShema extends IParams{
+export interface MainShema extends IParams {
     filter: IFilter;
-    isModalVisible: boolean
+    isModalVisible: boolean;
 }
 
 export type IFilter = 'day' | 'week' | 'month';
@@ -39,6 +39,7 @@ export interface AttendanceResponse {
     general: GeneralData[];
     top10: Top10Data[];
     total_cars: number;
+    general_count: number,
     graphic: GraphicData[];
-    all_cars: AllCars[]
+    all_cars: AllCars[];
 }

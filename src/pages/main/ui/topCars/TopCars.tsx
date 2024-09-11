@@ -14,6 +14,12 @@ export const TopCars = ({ data, filter }: TopCarsProps) => {
 
     const columns: TableProps<Top10Data>['columns'] = [
         {
+            title: '№',
+            dataIndex: 'top',
+            key: 'top',
+            render: (_: any, __: Top10Data, index: number) => <>{index + 1}</>,
+        },
+        {
             title: 'Фото',
             dataIndex: 'image_url',
             key: 'image_url',
@@ -37,7 +43,6 @@ export const TopCars = ({ data, filter }: TopCarsProps) => {
             title: 'Дата',
             dataIndex: 'attend_date',
             key: 'attend_date',
-            render: (date: string) => new Date(date).toLocaleString(),
             className: 'text-start',
         },
         {
@@ -57,19 +62,19 @@ export const TopCars = ({ data, filter }: TopCarsProps) => {
                     ? 'неделю'
                     : 'месяц'
             }`}
-            className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full max-w-4xl sm:p-0 !important" // Убираем padding на маленьких экранах
+            className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full max-w-4xl sm:p-0 !important"
         >
             <Table
                 dataSource={data}
                 loading={Boolean(!data)}
                 columns={columns}
-                pagination={{ pageSize: 5 }}
+                pagination={false}
                 rowKey={(rec) => rec.attend_id}
                 className="w-full"
                 onRow={(rec) => ({
                     onClick: () => {
                         if (!isPreviewOpened) {
-                            navigate(`/${rec.car_number}`);
+                            navigate(`/${rec.car_number}/${rec.attend_date}`);
                         }
                     },
                     className: 'hover:cursor-pointer',

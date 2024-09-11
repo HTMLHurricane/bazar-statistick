@@ -50,7 +50,7 @@ export const DontPay = () => {
     return (
         <>
             <Card
-                title="Не платят"
+                title="Администрация"
                 className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full md:w-3/4 lg:w-2/5"
             >
                 <Table

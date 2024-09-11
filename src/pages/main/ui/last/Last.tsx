@@ -10,10 +10,11 @@ import { useNavigate } from 'react-router-dom';
 
 interface LastProps {
     data: GeneralData[] | undefined;
+    total: number | undefined;
     filter: IFilter;
 }
 
-export const Last = ({ data, filter }: LastProps) => {
+export const Last = ({ data, filter, total }: LastProps) => {
     const limit = useGetLimit();
     const page = useGetPage();
     const { setLimit, setPage } = useMainActions();
@@ -71,7 +72,7 @@ export const Last = ({ data, filter }: LastProps) => {
                 pagination={{
                     current: page,
                     pageSize: limit,
-                    total: 3,
+                    total: total,
                     onChange: (page, limit) => {
                         setPage(page);
                         setLimit(limit);
@@ -89,8 +90,7 @@ export const Last = ({ data, filter }: LastProps) => {
                     className: 'hover:cursor-pointer',
                 })}
                 className="w-full"
-                scroll={{ y: 300 }}
-                size="small"
+                scroll={{ y: 450 }}
             />
         </Card>
     );
