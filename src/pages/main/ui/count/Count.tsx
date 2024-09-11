@@ -15,18 +15,23 @@ const CarStatisticsDoughnutChart = ({
     title,
     flag,
 }: CarStatisticsDoughnutChartProps) => {
-    const [prevCount, setPrevCount] = useState<number>(0);
+    const [prevCount, setPrevCount] = useState<number | undefined>(undefined);
+    const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 
     useEffect(() => {
         if (count !== undefined) {
-            setPrevCount(count);
+            if (isFirstRender) {
+                setIsFirstRender(false);
+            } else {
+                setPrevCount(count);
+            }
         }
     }, [count]);
 
     return (
         <Card
             title={
-                <div className="flex jusbe items-center">
+                <div className="flex justify-between items-center">
                     {title}{' '}
                     <span className="pl-2">
                         {flag === 'cars' ? (
@@ -50,11 +55,12 @@ const CarStatisticsDoughnutChart = ({
         >
             <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center py-6 md:py-8 lg:py-12 xl:py-16">
                 <CountUp
-                    start={prevCount}
+                    start={isFirstRender ? 0 : prevCount}
                     end={count ? count : 0}
                     duration={3}
                     useEasing={true}
                     separator=","
+                    onEnd={() => setPrevCount(count ? count : 0)}
                 />
             </div>
         </Card>
