@@ -3,19 +3,17 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { routeConfig } from '@/app/providers/router/routeConfig/routeConfig';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Button, Drawer, Menu, Input, List } from 'antd';
+import { Button, Drawer, Menu } from 'antd';
 import { TOKEN } from '@/shared/const/localstorage';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import { MenuOutlined } from '@ant-design/icons';
 import { useLogout } from '@/entities/auth/api/authApi';
-import { AllCars } from '@/entities/main/model/types/mainType';
-import { useGetCarDay } from '@/entities/main/api/mainApi';
 
 export const Navbar = memo(() => {
     const [drawerOpen, setDrawerOpen] = useState(false);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [filteredCars, setFilteredCars] = useState<AllCars[]>([]);
-    const { data } = useGetCarDay({ page: 1, limit: 10 });
+    // const [searchTerm, setSearchTerm] = useState('');
+    // const [filteredCars, setFilteredCars] = useState<AllCars[]>([]);
+    // const { data } = useGetCarDay({ page: 1, limit: 10 });
     const navigate = useNavigate();
     const [logout] = useLogout();
 
