@@ -117,7 +117,7 @@ export const Navbar = memo(() => {
                                         className="hover:bg-gray-100 p-2 cursor-pointer flex items-center"
                                     >
                                         <img
-                                            src={car.last_attendance.image_url}
+                                            src={car.last_attendance?.image_url}
                                             alt="car"
                                             className="w-12 h-12 mr-3"
                                         />

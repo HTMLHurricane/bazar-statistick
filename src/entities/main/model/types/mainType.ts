@@ -28,8 +28,9 @@ export interface GraphicData {
 export interface AllCars {
     number: string;
     last_attendance: {
+        date: string;
         time: string;
-        image_url: string;
+        image_url?: string;
     };
 }
 export interface AttendanceResponse {
