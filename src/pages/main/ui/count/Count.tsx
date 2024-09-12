@@ -8,23 +8,20 @@ interface CarStatisticsDoughnutChartProps {
     count: number | undefined;
     title: string;
     flag: 'car' | 'cars';
+    filter: string;
 }
 
 const CarStatisticsDoughnutChart = ({
     count,
     title,
     flag,
+    filter,
 }: CarStatisticsDoughnutChartProps) => {
     const [prevCount, setPrevCount] = useState<number | undefined>(undefined);
-    const [isFirstRender, setIsFirstRender] = useState<boolean>(true);
 
     useEffect(() => {
         if (count !== undefined) {
-            if (isFirstRender) {
-                setIsFirstRender(false);
-            } else {
-                setPrevCount(count);
-            }
+            setPrevCount(count);
         }
     }, [count]);
 
@@ -55,7 +52,7 @@ const CarStatisticsDoughnutChart = ({
         >
             <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center py-6 md:py-8 lg:py-12 xl:py-16">
                 <CountUp
-                    start={isFirstRender ? 0 : prevCount}
+                    start={filter ? 0 : prevCount}
                     end={count ? count : 0}
                     duration={3}
                     useEasing={true}

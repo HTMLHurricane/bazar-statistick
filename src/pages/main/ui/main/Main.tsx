@@ -71,8 +71,10 @@ export const MainPage = () => {
                                     : 'месяц'
                             }`}
                             flag="cars"
+                            filter={filter}
                         />
                         <Count
+                            filter={filter}
                             count={data?.total_cars}
                             title={`Количество машин за ${
                                 filter === 'day'
