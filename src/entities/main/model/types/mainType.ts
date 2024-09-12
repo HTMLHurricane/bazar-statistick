@@ -41,5 +41,4 @@ export interface AttendanceResponse {
     total_cars: number;
     general_count: number,
     graphic: GraphicData[];
-    all_cars: AllCars[];
 }

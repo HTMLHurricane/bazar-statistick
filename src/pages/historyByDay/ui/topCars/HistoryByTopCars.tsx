@@ -1,17 +1,17 @@
-import { Top10Data } from '@/entities/main';
+import { GeneralData } from '@/entities/main';
 import { Card, Table, Image, TableProps } from 'antd';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface TopCarsProps {
-    data: Top10Data[] | undefined;
+    data: GeneralData[] | undefined;
 }
 
 export const HistoryByTopCars = ({ data }: TopCarsProps) => {
     const [isPreviewOpened, setIsPreviewOpened] = useState(false);
     const navigate = useNavigate();
 
-    const columns: TableProps<Top10Data>['columns'] = [
+    const columns: TableProps<GeneralData>['columns'] = [
         {
             title: 'Фото',
             dataIndex: 'image_url',
@@ -36,7 +36,6 @@ export const HistoryByTopCars = ({ data }: TopCarsProps) => {
             title: 'Дата',
             dataIndex: 'attend_date',
             key: 'attend_date',
-            render: (date: string) => new Date(date).toLocaleString(),
             className: 'text-start',
         },
         {
@@ -56,6 +55,7 @@ export const HistoryByTopCars = ({ data }: TopCarsProps) => {
                 dataSource={data}
                 loading={Boolean(!data)}
                 columns={columns}
+                pagination={false}
                 rowKey={(rec) => rec.attend_id}
                 className="w-full"
                 onRow={(rec) => ({

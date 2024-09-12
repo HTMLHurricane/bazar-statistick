@@ -33,18 +33,18 @@ export const Navbar = memo(() => {
         setDrawerOpen(false);
     };
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
-        setSearchTerm(value);
-        if (value && data) {
-            const filtered = data.all_cars.filter((car) =>
-                car.car_number.toLowerCase().includes(value.toLowerCase()),
-            );
-            setFilteredCars(filtered);
-        } else {
-            setFilteredCars([]);
-        }
-    };
+    // const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const value = e.target.value;
+    //     setSearchTerm(value);
+    //     if (value && data) {
+    //         const filtered = data.all_cars.filter((car) =>
+    //             car.car_number.toLowerCase().includes(value.toLowerCase()),
+    //         );
+    //         setFilteredCars(filtered);
+    //     } else {
+    //         setFilteredCars([]);
+    //     }
+    // };
 
     const menuItems = [
         ...Object.values(routeConfig)
@@ -98,7 +98,7 @@ export const Navbar = memo(() => {
                     </nav>
                 </FlexBox>
 
-                <FlexBox cls="relative w-full sm:w-2/3 md:w-1/3 mx-0 sm:mx-5 md:mx-10 py-2 sm:py-4">
+                {/* <FlexBox cls="relative w-full sm:w-2/3 md:w-1/3 mx-0 sm:mx-5 md:mx-10 py-2 sm:py-4">
                     <Input
                         value={searchTerm}
                         onChange={handleSearch}
@@ -142,7 +142,7 @@ export const Navbar = memo(() => {
                             />
                         </div>
                     )}
-                </FlexBox>
+                </FlexBox> */}
 
                 <FlexBox cls="hidden md:flex items-center">
                     <Button

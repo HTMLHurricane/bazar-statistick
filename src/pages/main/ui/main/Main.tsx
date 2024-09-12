@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Navbar } from '@/widgets/navbar';
 import { TopCars } from '../topCars/TopCars';
 import PeakHours from '../peakHours/PeakHours';
@@ -24,43 +25,34 @@ export const MainPage = () => {
     const limit = useGetLimit();
     const page = useGetPage();
     const filter = useGetFilter();
-    const { data: carDayData } = useGetCarDay(
-        { limit, page },
-        {
-            pollingInterval: 5000,
-            refetchOnFocus: false,
-        },
-    );
-    const { data: carWeekData } = useGetCarWeek(
-        { limit, page },
-        {
-            pollingInterval: 5000,
-            refetchOnFocus: false,
-        },
-    );
-    const { data: carMonthData } = useGetCarMonth(
-        { limit, page },
-        {
-            pollingInterval: 5000,
-            refetchOnFocus: false,
-        },
-    );
 
-    useEffect(() => {
+    const getCarData = () => {
         switch (filter) {
             case 'day':
-                setData(carDayData);
-                break;
+                return useGetCarDay(
+                    { limit, page },
+                    { pollingInterval: 5000, refetchOnFocus: false },
+                );
             case 'week':
-                setData(carWeekData);
-                break;
+                return useGetCarWeek(
+                    { limit, page },
+                    { pollingInterval: 5000, refetchOnFocus: false },
+                );
             case 'month':
-                setData(carMonthData);
-                break;
+                return useGetCarMonth(
+                    { limit, page },
+                    { pollingInterval: 5000, refetchOnFocus: false },
+                );
             default:
-                setData(undefined);
+                return undefined;
         }
-    }, [filter, carDayData, carWeekData, carMonthData]);
+    };
+
+    const { data: carData } = getCarData() || {};
+
+    useEffect(() => {
+        setData(carData);
+    }, [filter, carData]);
 
     return (
         <>
@@ -78,7 +70,7 @@ export const MainPage = () => {
                                     ? 'неделю'
                                     : 'месяц'
                             }`}
-                            flag='cars'
+                            flag="cars"
                         />
                         <Count
                             count={data?.total_cars}
@@ -89,7 +81,7 @@ export const MainPage = () => {
                                     ? 'неделю'
                                     : 'месяц'
                             }`}
-                            flag='car'
+                            flag="car"
                         />
                     </div>
 

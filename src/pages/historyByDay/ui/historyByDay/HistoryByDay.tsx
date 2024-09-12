@@ -13,7 +13,7 @@ export const HistoryByDay = () => {
             <Navbar />
             <div className="container mx-auto px-[5%] pb-10">
                 <HistoryByDayHeader date={dateDay!} />
-                <HistoryByTopCars data={data?.top10} />
+                <HistoryByTopCars data={data?.general?.slice(0,10)} />
                 <HistoryByDayLast data={data?.general} />
             </div>
         </>
