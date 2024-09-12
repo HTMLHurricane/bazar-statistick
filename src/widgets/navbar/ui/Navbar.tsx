@@ -116,11 +116,11 @@ export const Navbar = memo(() => {
                                         }
                                         className="hover:bg-gray-100 p-2 cursor-pointer flex items-center"
                                     >
-                                        <img
+                                        {/* <img
                                             src={car.last_attendance?.image_url}
-                                            alt="car"
+                                            alt=""
                                             className="w-12 h-12 mr-3"
-                                        />
+                                        /> */}
                                         <div className="flex-1 flex justify-between items-center">
                                             <div className="font-bold">
                                                 {car.number}
