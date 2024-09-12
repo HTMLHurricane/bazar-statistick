@@ -1,6 +1,6 @@
 import { rtkApi } from '@/shared/api/rtkApi';
 import { IParams } from '@/shared/types/types';
-import { AttendanceResponse } from '..';
+import { AllCars, AttendanceResponse } from '..';
 
 const mainApi = rtkApi.injectEndpoints({
     endpoints: (build) => ({
@@ -46,9 +46,16 @@ const mainApi = rtkApi.injectEndpoints({
                 },
             }),
         }),
+        getAllCars: build.query<AllCars[], void>({
+            query: () => ({
+                url: 'exception-nums/search',
+                method: 'GET',
+            }),
+        }),
     }),
 });
 
 export const useGetCarDay = mainApi.useGetCarDayQuery;
 export const useGetCarWeek = mainApi.useGetCarWeekQuery;
 export const useGetCarMonth = mainApi.useGetCarMonthQuery;
+export const useGetAllCars = mainApi.useGetAllCarsQuery;

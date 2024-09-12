@@ -25,20 +25,17 @@ export interface GraphicData {
     day?: string;
     count: number;
 }
-
 export interface AllCars {
-    attend_id: number;
-    car_number: string;
-    attend_date: string;
-    attend_time: string;
-    image_url: string;
-    attend_count: number;
+    number: string;
+    last_attendance: {
+        time: string;
+        image_url: string;
+    };
 }
-
 export interface AttendanceResponse {
     general: GeneralData[];
     top10: Top10Data[];
     total_cars: number;
-    general_count: number,
+    general_count: number;
     graphic: GraphicData[];
 }

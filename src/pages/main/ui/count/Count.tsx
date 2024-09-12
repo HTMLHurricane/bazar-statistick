@@ -17,13 +17,19 @@ const CarStatisticsDoughnutChart = ({
     flag,
     filter,
 }: CarStatisticsDoughnutChartProps) => {
-    const [prevCount, setPrevCount] = useState<number | undefined>(undefined);
+    const [prevCount, setPrevCount] = useState<number>(0);
+    const [prevFilter, setPrevFilter] = useState<string>(filter);
+    const [key, setKey] = useState<number>(0);
 
     useEffect(() => {
-        if (count !== undefined) {
-            setPrevCount(count);
+        if (filter !== prevFilter) {
+            setPrevFilter(filter);
+            setPrevCount(0);
+            setKey(prevKey => prevKey + 1);
+        } else if (count !== undefined) {
+            setKey(prevKey => prevKey + 1);
         }
-    }, [count]);
+    }, [filter, prevFilter, count]);
 
     return (
         <Card
@@ -52,7 +58,8 @@ const CarStatisticsDoughnutChart = ({
         >
             <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center py-6 md:py-8 lg:py-12 xl:py-16">
                 <CountUp
-                    start={filter ? 0 : prevCount}
+                    key={key}
+                    start={prevCount}
                     end={count ? count : 0}
                     duration={3}
                     useEasing={true}

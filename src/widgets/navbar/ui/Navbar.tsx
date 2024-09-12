@@ -3,17 +3,19 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { routeConfig } from '@/app/providers/router/routeConfig/routeConfig';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Button, Drawer, Menu } from 'antd';
+import { Button, Drawer, Menu, Input, List } from 'antd';
 import { TOKEN } from '@/shared/const/localstorage';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import { MenuOutlined } from '@ant-design/icons';
 import { useLogout } from '@/entities/auth/api/authApi';
+import { AllCars } from '@/entities/main/model/types/mainType';
+import { useGetAllCars } from '@/entities/main/api/mainApi';
 
 export const Navbar = memo(() => {
     const [drawerOpen, setDrawerOpen] = useState(false);
-    // const [searchTerm, setSearchTerm] = useState('');
-    // const [filteredCars, setFilteredCars] = useState<AllCars[]>([]);
-    // const { data } = useGetCarDay({ page: 1, limit: 10 });
+    const [searchTerm, setSearchTerm] = useState('');
+    const [filteredCars, setFilteredCars] = useState<AllCars[]>([]);
+    const { data } = useGetAllCars();
     const navigate = useNavigate();
     const [logout] = useLogout();
 
@@ -31,18 +33,18 @@ export const Navbar = memo(() => {
         setDrawerOpen(false);
     };
 
-    // const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const value = e.target.value;
-    //     setSearchTerm(value);
-    //     if (value && data) {
-    //         const filtered = data.all_cars.filter((car) =>
-    //             car.car_number.toLowerCase().includes(value.toLowerCase()),
-    //         );
-    //         setFilteredCars(filtered);
-    //     } else {
-    //         setFilteredCars([]);
-    //     }
-    // };
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setSearchTerm(value);
+        if (value && data) {
+            const filtered = data.filter((car) =>
+                car.number.toLowerCase().includes(value.toLowerCase()),
+            );
+            setFilteredCars(filtered);
+        } else {
+            setFilteredCars([]);
+        }
+    };
 
     const menuItems = [
         ...Object.values(routeConfig)
@@ -96,7 +98,7 @@ export const Navbar = memo(() => {
                     </nav>
                 </FlexBox>
 
-                {/* <FlexBox cls="relative w-full sm:w-2/3 md:w-1/3 mx-0 sm:mx-5 md:mx-10 py-2 sm:py-4">
+                <FlexBox cls="relative w-full sm:w-2/3 md:w-1/3 mx-0 sm:mx-5 md:mx-10 py-2 sm:py-4">
                     <Input
                         value={searchTerm}
                         onChange={handleSearch}
@@ -110,21 +112,21 @@ export const Navbar = memo(() => {
                                 renderItem={(car) => (
                                     <List.Item
                                         onClick={() =>
-                                            navigate(`/${car.car_number}`)
+                                            navigate(`/${car.number}`)
                                         }
                                         className="hover:bg-gray-100 p-2 cursor-pointer flex items-center"
                                     >
                                         <img
-                                            src={car.image_url}
+                                            src={car.last_attendance.image_url}
                                             alt="car"
                                             className="w-12 h-12 mr-3"
                                         />
                                         <div className="flex-1 flex justify-between items-center">
                                             <div className="font-bold">
-                                                {car.car_number}
+                                                {car.number}
                                             </div>
                                             <div className="text-gray-500 text-sm">
-                                                {car.attend_time}
+                                                {car.last_attendance.time}
                                             </div>
                                         </div>
                                     </List.Item>
@@ -140,7 +142,7 @@ export const Navbar = memo(() => {
                             />
                         </div>
                     )}
-                </FlexBox> */}
+                </FlexBox>
 
                 <FlexBox cls="hidden md:flex items-center">
                     <Button

@@ -5,4 +5,5 @@ export type {
     GraphicData,
     Top10Data,
     IFilter,
+    AllCars
 } from './model/types/mainType';

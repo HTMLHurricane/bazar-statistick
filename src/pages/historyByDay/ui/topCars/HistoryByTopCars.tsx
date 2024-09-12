@@ -61,7 +61,7 @@ export const HistoryByTopCars = ({ data }: TopCarsProps) => {
                 onRow={(rec) => ({
                     onClick: () => {
                         if (!isPreviewOpened) {
-                            navigate(`/${rec.car_number}`);
+                            navigate(`/${rec.car_number}/${rec.attend_date}`);
                         }
                     },
                     className: 'hover:cursor-pointer',
