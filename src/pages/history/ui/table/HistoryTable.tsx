@@ -40,6 +40,11 @@ export const HistoryTable = () => {
             key: 'overall_count',
         },
         {
+            title: 'Поток машин',
+            dataIndex: 'general_attendances_count',
+            key: 'general_attendances_count',
+        },
+        {
             title: 'Топ 10 машин',
             dataIndex: 'top',
             key: 'top',

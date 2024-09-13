@@ -13,6 +13,7 @@ export interface HistoryDataResponse {
     overall_count: number;
     date: string;
     general: GeneralData[];
-    created_at: string;
-    updated_at: string;
+    general_attendances_count: number | null;
+    created_at?: string;
+    updated_at?: string;
 }

@@ -3,7 +3,6 @@ import { Navbar } from '@/widgets/navbar';
 import { TopCars } from '../topCars/TopCars';
 import PeakHours from '../peakHours/PeakHours';
 import { Last } from '../last/Last';
-import Count from '../count/Count';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import {
     useGetFilter,
@@ -19,6 +18,7 @@ import { useEffect, useState } from 'react';
 import { AttendanceResponse } from '@/entities/main';
 import { DontPay } from '../dontPay/DontPay';
 import { MainHead } from '../head/MainHead';
+import { Count } from '@/shared/ui';
 
 export const MainPage = () => {
     const [data, setData] = useState<AttendanceResponse | undefined>(undefined);
@@ -71,10 +71,8 @@ export const MainPage = () => {
                                     : 'месяц'
                             }`}
                             flag="cars"
-                            filter={filter}
                         />
                         <Count
-                            filter={filter}
                             count={data?.total_cars}
                             title={`Количество машин за ${
                                 filter === 'day'

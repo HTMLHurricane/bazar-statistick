@@ -93,7 +93,7 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
                 beginAtZero: true,
                 min: 0,
                 ticks: {
-                    stepSize: 1,
+                    stepSize: 10,
                 },
             },
             x: {

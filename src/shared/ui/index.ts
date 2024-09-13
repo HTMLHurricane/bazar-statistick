@@ -7,3 +7,4 @@ export const Modal = lazy(() => import('antd/es/modal/Modal'));
 
 export { DeleteButtonAsync as DeleteButton } from './button/deleteButton/DeleteButton.async';
 export { EditButtonAsync as EditButton } from './button/editButton/EditButton.async';
+export { Count } from './count/Count';

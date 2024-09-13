@@ -4,32 +4,22 @@ import { Card } from 'antd';
 import { useState, useEffect } from 'react';
 import CountUp from 'react-countup';
 
-interface CarStatisticsDoughnutChartProps {
+interface CountProps {
     count: number | undefined;
     title: string;
     flag: 'car' | 'cars';
-    filter: string;
 }
 
-const CarStatisticsDoughnutChart = ({
-    count,
-    title,
-    flag,
-    filter,
-}: CarStatisticsDoughnutChartProps) => {
-    const [prevCount, setPrevCount] = useState<number>(0);
-    const [prevFilter, setPrevFilter] = useState<string>(filter);
-    const [key, setKey] = useState<number>(0);
+export const Count = ({ count, title, flag }: CountProps) => {
+    const [prevChild, setPrevChild] = useState(0);
+    const [currentChild, setCurrentChild] = useState(0);
 
     useEffect(() => {
-        if (filter !== prevFilter) {
-            setPrevFilter(filter);
-            setPrevCount(0);
-            setKey(prevKey => prevKey + 1);
-        } else if (count !== undefined) {
-            setKey(prevKey => prevKey + 1);
+        if (count) {
+            setPrevChild(currentChild);
+            setCurrentChild(count);
         }
-    }, [filter, prevFilter, count]);
+    }, [count]);
 
     return (
         <Card
@@ -58,17 +48,12 @@ const CarStatisticsDoughnutChart = ({
         >
             <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center py-6 md:py-8 lg:py-12 xl:py-16">
                 <CountUp
-                    key={key}
-                    start={prevCount}
-                    end={count ? count : 0}
-                    duration={3}
                     useEasing={true}
-                    separator=","
-                    onEnd={() => setPrevCount(count ? count : 0)}
+                    start={prevChild}
+                    end={currentChild}
+                    duration={3}
                 />
             </div>
         </Card>
     );
 };
-
-export default CarStatisticsDoughnutChart;
