@@ -7,6 +7,7 @@ const initialState: MainShema = {
     limit: 10,
     page: 1,
     isModalVisible: false,
+    isUpdateModal: false,
 };
 
 const mainSlice = buildSlice({
@@ -24,6 +25,9 @@ const mainSlice = buildSlice({
         },
         setIsModalVisible(state, actions: PayloadAction<boolean>) {
             state.isModalVisible = actions.payload;
+        },
+        setIsUpdateModal(state, actions: PayloadAction<boolean>) {
+            state.isUpdateModal = actions.payload;
         },
     },
 });

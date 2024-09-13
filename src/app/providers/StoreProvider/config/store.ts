@@ -11,6 +11,7 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { mainReducer } from '@/entities/main/model/slice/mainSlice';
 import { historyReducer } from '@/entities/history/model/slice/historySlice';
 import { infoReducer } from '@/entities/info/model/slice/infoSlice';
+import { unknownReducer } from '@/entities/unknown/model/slice/unknownSlice';
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -21,6 +22,7 @@ export function createReduxStore(
         main: mainReducer,
         history: historyReducer,
         info: infoReducer,
+        unknown: unknownReducer,
         [rtkApi.reducerPath]: rtkApi.reducer,
     };
 

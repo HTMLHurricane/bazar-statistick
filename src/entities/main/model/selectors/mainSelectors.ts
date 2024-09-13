@@ -8,3 +8,6 @@ export const [useGetPage, page] = buildSelector((state) => state.main.page);
 export const [useGetIsModalVisible, isModalVisible] = buildSelector(
     (state) => state.main.isModalVisible,
 );
+export const [useGetIsUpdateModal, isUpdateModal] = buildSelector(
+    (state) => state.main.isUpdateModal,
+);

@@ -5,6 +5,7 @@ import { Info } from '@/pages/info/ui/info/Info';
 import { InfoByDate } from '@/pages/infoByDate';
 import { MainPage } from '@/pages/main';
 import { NotFoundPage } from '@/pages/notFoundPage/ui';
+import { Unknown } from '@/pages/unknown';
 import { AppRoutesProps } from '@/shared/types/router';
 
 export enum AppRoutes {
@@ -14,6 +15,7 @@ export enum AppRoutes {
     HISTORY = 'history',
     HISTORYBYDAY = 'history_by_day',
     LOGIN = 'login',
+    UNKNOWN = 'unknown',
     NOT_FOUND = 'not_found',
 }
 
@@ -24,6 +26,7 @@ export const RoutePath: Record<AppRoutes, string> = {
     [AppRoutes.HISTORY]: '/history',
     [AppRoutes.HISTORYBYDAY]: '/history/',
     [AppRoutes.LOGIN]: '/login',
+    [AppRoutes.UNKNOWN]: '/unknown',
     [AppRoutes.NOT_FOUND]: '*',
 };
 
@@ -58,6 +61,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.LOGIN]: {
         path: RoutePath.login,
         element: <LoginForm />,
+    },
+    [AppRoutes.UNKNOWN]: {
+        path: RoutePath.unknown,
+        element: <Unknown />,
+        authOnly: true,
     },
     [AppRoutes.NOT_FOUND]: {
         path: RoutePath.not_found,

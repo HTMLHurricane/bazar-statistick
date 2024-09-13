@@ -1,7 +1,8 @@
-import { HistorySchema } from '@/entities/history'
-import { InfoSchema } from '@/entities/info'
-import { MainShema } from '@/entities/main'
-import { rtkApi } from '@/shared/api/rtkApi'
+import { HistorySchema } from '@/entities/history';
+import { InfoSchema } from '@/entities/info';
+import { MainShema } from '@/entities/main';
+import { UnknownSchema } from '@/entities/unknown';
+import { rtkApi } from '@/shared/api/rtkApi';
 import {
     ReducersMapObject,
     AnyAction,
@@ -14,6 +15,7 @@ export interface StateSchema {
     main: MainShema;
     history: HistorySchema;
     info: InfoSchema;
+    unknown: UnknownSchema;
     [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 }
 

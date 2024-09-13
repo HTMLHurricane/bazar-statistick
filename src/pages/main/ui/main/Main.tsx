@@ -17,7 +17,7 @@ import {
 import { useEffect, useState } from 'react';
 import { AttendanceResponse } from '@/entities/main';
 import { DontPay } from '../dontPay/DontPay';
-import { MainHead } from '../head/MainHead';
+import { MainHead } from '../header/MainHead';
 import { Count } from '@/shared/ui';
 import {
     getDefaultDateDay,

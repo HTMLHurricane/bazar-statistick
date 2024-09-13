@@ -1,5 +1,5 @@
 import { Navbar } from '@/widgets/navbar';
-import { InfoHead } from '../head/InfoHead';
+import { InfoHead } from '../headed/InfoHead';
 import { InfoTable } from '../table/InfoTable'
 
 export const Info = () => {

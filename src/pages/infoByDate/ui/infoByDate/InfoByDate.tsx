@@ -1,6 +1,6 @@
 import { Navbar } from '@/widgets/navbar';
 import { InfoByDateTable } from '../table/InfoByDateTable';
-import { InfoByDateHeader } from '../head/InfoByDateHeader'
+import { InfoByDateHeader } from '../header/InfoByDateHeader'
 
 export const InfoByDate = () => {
     return (

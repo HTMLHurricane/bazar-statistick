@@ -3,6 +3,7 @@ import { IParams } from '@/shared/types/types';
 export interface MainShema extends IParams {
     filter: IFilter;
     isModalVisible: boolean;
+    isUpdateModal: boolean;
 }
 
 export type IFilter = 'day' | 'week' | 'month';
