@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FC } from 'react';
 import { Navbar } from '@/widgets/navbar';
 import { UnknownHeader } from '../header/UnknownHeader';
 import {
@@ -13,10 +13,14 @@ import { Count } from '@/shared/ui';
 import { Modal, Input, Button } from 'antd';  
 import 'antd/dist/reset.css';
 
-const PasswordModal = ({ onSubmit }) => {
-    const [password, setPassword] = useState('');
+interface PasswordModalProps {
+    onSubmit: (password: string) => void;
+}
 
-    const handlePasswordChange = (e) => {
+const PasswordModal: FC<PasswordModalProps> = ({ onSubmit }) => {
+    const [password, setPassword] = useState<string>('');
+
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
     };
 
@@ -27,7 +31,7 @@ const PasswordModal = ({ onSubmit }) => {
     return (
         <Modal
             title="Введите пароль"
-            visible={true}
+            open={true}
             footer={null}
             closable={false}
         >
@@ -47,17 +51,19 @@ const PasswordModal = ({ onSubmit }) => {
     );
 };
 
-export const Unknown = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+export const Unknown: FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     
     const date = useGetUnknownDate();
     const limit = useGetUnknownLimit();
     const page = useGetUnknownPage();
     const selectedDate = date || getDefaultDateDay();
+    
+    // Типизация для данных, возвращаемых useGetUnknownCars
     const { data } = useGetUnknownCars(
         { limit, page, date: selectedDate },
-        { pollingInterval: 25000, refetchOnFocus: false },
+        { pollingInterval: 25000, refetchOnFocus: false }
     );
 
     useEffect(() => {
