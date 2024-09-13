@@ -1,5 +1,6 @@
 import { useGetDateMonth } from '@/entities/history/model/selectors/historySelectors';
 import { useHistoryActions } from '@/entities/history/model/slice/historySlice';
+import { getDefaultDateMonth } from '@/shared/lib/defaultDate/defaultDate'
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,10 +9,6 @@ import { Button, DatePicker, DatePickerProps } from 'antd';
 export const HistoryHeader = () => {
     const { setDateMonth } = useHistoryActions();
     const dateMonth = useGetDateMonth();
-    const getDefaultDateMonth = () => {
-        const today = new Date();
-        return today.toISOString().slice(0, 7);
-    };
     const selectedDate = dateMonth || getDefaultDateMonth();
     const onChangeMonth: DatePickerProps['onChange'] = (
         _,

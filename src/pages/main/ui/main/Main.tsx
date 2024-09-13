@@ -19,6 +19,11 @@ import { AttendanceResponse } from '@/entities/main';
 import { DontPay } from '../dontPay/DontPay';
 import { MainHead } from '../head/MainHead';
 import { Count } from '@/shared/ui';
+import {
+    getDefaultDateDay,
+    getDefaultDateMonth,
+    getDefaultDateWeek,
+} from '@/shared/lib/defaultDate/defaultDate';
 
 export const MainPage = () => {
     const [data, setData] = useState<AttendanceResponse | undefined>(undefined);
@@ -30,17 +35,17 @@ export const MainPage = () => {
         switch (filter) {
             case 'day':
                 return useGetCarDay(
-                    { limit, page },
+                    { limit, page, date: getDefaultDateDay() },
                     { pollingInterval: 5000, refetchOnFocus: false },
                 );
             case 'week':
                 return useGetCarWeek(
-                    { limit, page },
+                    { limit, page, week: getDefaultDateWeek() },
                     { pollingInterval: 5000, refetchOnFocus: false },
                 );
             case 'month':
                 return useGetCarMonth(
-                    { limit, page },
+                    { limit, page, month: getDefaultDateMonth() },
                     { pollingInterval: 5000, refetchOnFocus: false },
                 );
             default:

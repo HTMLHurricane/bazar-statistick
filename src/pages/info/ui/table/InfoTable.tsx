@@ -73,6 +73,7 @@ export const InfoTable = () => {
                 <Image
                     width={90}
                     onClick={(e) => e.stopPropagation()}
+                    preview={{ onVisibleChange: setIsPreviewOpened }}
                     src={photo}
                     alt="photo"
                 />

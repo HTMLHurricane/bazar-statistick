@@ -15,6 +15,7 @@ const mainApi = rtkApi.injectEndpoints({
                 params: {
                     limit: params.limit,
                     page: params.page,
+                    day: params.date,
                 },
             }),
         }),
@@ -29,6 +30,7 @@ const mainApi = rtkApi.injectEndpoints({
                 params: {
                     limit: params.limit,
                     page: params.page,
+                    week: params.week,
                 },
             }),
         }),
@@ -43,6 +45,7 @@ const mainApi = rtkApi.injectEndpoints({
                 params: {
                     limit: params.limit,
                     page: params.page,
+                    month: params.month,
                 },
             }),
         }),
