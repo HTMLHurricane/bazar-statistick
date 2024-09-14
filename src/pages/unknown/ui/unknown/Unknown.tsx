@@ -11,7 +11,6 @@ import { useGetUnknownCars } from '@/entities/unknown/api/unknownApi';
 import { getDefaultDateDay } from '@/shared/lib/defaultDate/defaultDate';
 import { Count } from '@/shared/ui';
 import { Modal, Input, Button } from 'antd';  
-import 'antd/dist/reset.css';
 
 interface PasswordModalProps {
     onSubmit: (password: string) => void;

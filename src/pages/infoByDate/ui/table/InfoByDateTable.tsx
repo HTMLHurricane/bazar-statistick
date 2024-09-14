@@ -1,8 +1,9 @@
 import { useGetInfoByDate } from '@/entities/infoByDate/api/infoByDateApi';
 import { CarsInfoByNumImage } from '@/entities/infoByDate/model/infoByDateType';
+import { Card } from '@/shared/ui'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Card, Table, TableProps, Image, Button } from 'antd';
+import { Table, TableProps, Image, Button } from 'antd';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 

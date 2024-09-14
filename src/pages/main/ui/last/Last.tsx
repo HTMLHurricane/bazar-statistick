@@ -1,12 +1,13 @@
+import { Image, Table, TableProps } from 'antd';
 import { GeneralData, IFilter } from '@/entities/main';
 import {
     useGetLimit,
     useGetPage,
 } from '@/entities/main/model/selectors/mainSelectors';
 import { useMainActions } from '@/entities/main/model/slice/mainSlice';
-import { Card, Image, Table, TableProps } from 'antd';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Card } from '@/shared/ui';
 
 interface LastProps {
     data: GeneralData[] | undefined;

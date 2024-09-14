@@ -1,4 +1,4 @@
-import { Card } from 'antd';
+import { Card } from '@/shared/ui'
 
 interface CarStatisticsDoughnutChartProps {
     count: number | undefined;

@@ -1,6 +1,7 @@
 import { UnknownCars } from '@/entities/unknown';
 import { useUnknownActions } from '@/entities/unknown/model/slice/unknownSlice';
-import { TableProps, Image, Card, Table } from 'antd';
+import { Card } from '@/shared/ui';
+import { TableProps, Image, Table } from 'antd';
 
 interface UnknownProps {
     data: UnknownCars[] | undefined;

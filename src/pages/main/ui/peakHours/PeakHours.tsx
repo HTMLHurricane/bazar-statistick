@@ -10,8 +10,8 @@ import {
     Legend,
     Filler,
 } from 'chart.js';
-import Card from 'antd/es/card/Card';
 import { GraphicData, IFilter } from '@/entities/main';
+import { Card } from '@/shared/ui'
 
 Chart.register(
     CategoryScale,

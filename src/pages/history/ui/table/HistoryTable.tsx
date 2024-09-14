@@ -1,7 +1,8 @@
 import { useGetHistoryData } from '@/entities/history/api/historyApi';
 import { useGetDateMonth } from '@/entities/history/model/selectors/historySelectors';
 import { HistoryDataResponse } from '@/entities/history/model/types/historyType';
-import { Button, Card, Table, TableProps } from 'antd';
+import { Card } from '@/shared/ui'
+import { Button, Table, TableProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 export const HistoryTable = () => {

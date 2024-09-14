@@ -1,5 +1,6 @@
 import { GeneralData } from '@/entities/main';
-import { Card, Table, Image, TableProps } from 'antd';
+import { Card } from '@/shared/ui';
+import { Table, Image, TableProps } from 'antd';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 

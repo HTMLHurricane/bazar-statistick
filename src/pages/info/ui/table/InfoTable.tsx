@@ -6,7 +6,8 @@ import {
     useGetInfoPage,
 } from '@/entities/info/model/selectors/infoSelectors';
 import { useInfoActions } from '@/entities/info/model/slice/infoSlice';
-import { Card, Table, Image, TableProps } from 'antd';
+import { Card } from '@/shared/ui';
+import { Table, Image, TableProps } from 'antd';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
