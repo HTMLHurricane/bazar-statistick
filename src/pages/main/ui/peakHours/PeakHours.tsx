@@ -11,7 +11,7 @@ import {
     Filler,
 } from 'chart.js';
 import { GraphicData, IFilter } from '@/entities/main';
-import { Card } from '@/shared/ui'
+import { Card } from '@/shared/ui';
 
 Chart.register(
     CategoryScale,
@@ -107,8 +107,8 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
                             : 'Дата',
                 },
                 ticks: {
-                    autoSkip: false, // Отключаем автоматический пропуск
-                    maxTicksLimit: sortedData?.length || 10, // Устанавливаем максимальное количество меток
+                    autoSkip: false,
+                    maxTicksLimit: sortedData?.length || 10,
                 },
             },
         },

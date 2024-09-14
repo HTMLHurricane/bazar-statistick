@@ -41,7 +41,7 @@ export const DontPay = () => {
         },
         {
             title: (
-                <div className="flex justify-end">
+                <div className="flex justify-center">
                     <Button onClick={showModal}>
                         <FontAwesomeIcon icon={faPlus} /> номер
                     </Button>
@@ -54,15 +54,6 @@ export const DontPay = () => {
                 </div>
             ),
         },
-        {
-            title: (
-                <div className="flex justify-end">
-                    <Button onClick={showUpdateModal}>
-                        <FontAwesomeIcon icon={faPen} /> график
-                    </Button>
-                </div>
-            ),
-        },
     ];
     useEffect(() => {
         if (isSuccess) {
@@ -72,7 +63,14 @@ export const DontPay = () => {
     return (
         <>
             <Card
-                title="Администрация"
+                title={
+                    <div className='flex items-center justify-between'>
+                        <div>Администрация</div>
+                        <Button onClick={showUpdateModal}>
+                            <FontAwesomeIcon icon={faPen} /> график
+                        </Button>
+                    </div>
+                }
                 className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 w-full md:w-3/4 lg:w-2/3"
             >
                 <Table

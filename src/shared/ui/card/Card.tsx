@@ -9,7 +9,7 @@ const CustomCard = styled(CardAntd)`
 
 type CardProps = {
     children: ReactNode;
-    title?: string;
+    title?: ReactNode;
     className?: string;
 };
 
