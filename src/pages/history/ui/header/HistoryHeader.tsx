@@ -1,15 +1,18 @@
 import { useGetDateMonth } from '@/entities/history/model/selectors/historySelectors';
 import { useHistoryActions } from '@/entities/history/model/slice/historySlice';
-import { getDefaultDateMonth } from '@/shared/lib/defaultDate/defaultDate'
+import { getDefaultDateMonth } from '@/shared/lib/defaultDate/defaultDate';
+import { Button, DatePicker } from '@/shared/ui';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, DatePicker, DatePickerProps } from 'antd';
+import { DatePickerProps } from 'antd/es/date-picker';
+import { memo } from 'react';
 
-export const HistoryHeader = () => {
+const HistoryHeader = () => {
     const { setDateMonth } = useHistoryActions();
     const dateMonth = useGetDateMonth();
     const selectedDate = dateMonth || getDefaultDateMonth();
+
     const onChangeMonth: DatePickerProps['onChange'] = (
         _,
         dateString: string | string[],
@@ -18,6 +21,7 @@ export const HistoryHeader = () => {
             setDateMonth(dateString);
         }
     };
+
     const downloadFile = () => {
         const url = `https://bazar-api.aralhub.uz/export-data/report/?date=${selectedDate}`;
         window.location.href = url;
@@ -45,3 +49,5 @@ export const HistoryHeader = () => {
         </FlexBox>
     );
 };
+
+export default memo(HistoryHeader);

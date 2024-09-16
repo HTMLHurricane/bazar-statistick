@@ -6,12 +6,12 @@ import {
     useGetInfoPage,
 } from '@/entities/info/model/selectors/infoSelectors';
 import { useInfoActions } from '@/entities/info/model/slice/infoSlice';
-import { Card } from '@/shared/ui';
-import { Table, Image, TableProps } from 'antd';
+import { Card, Table, Image } from '@/shared/ui';
+import { TableProps } from 'antd';
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export const InfoTable = () => {
+const InfoTable = () => {
     const [isPreviewOpened, setIsPreviewOpened] = useState(false);
     const navigate = useNavigate();
     const { id } = useParams();
@@ -122,3 +122,5 @@ export const InfoTable = () => {
         </Card>
     );
 };
+
+export default InfoTable;

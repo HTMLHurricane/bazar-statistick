@@ -1,7 +1,7 @@
 import { LoginForm } from '@/features/auth';
 import { History } from '@/pages/history';
 import { HistoryByDay } from '@/pages/historyByDay';
-import { Info } from '@/pages/info/ui/info/Info';
+import { Info } from '@/pages/info';
 import { InfoByDate } from '@/pages/infoByDate';
 import { MainPage } from '@/pages/main';
 import { NotFoundPage } from '@/pages/notFoundPage/ui';

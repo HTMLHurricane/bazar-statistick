@@ -1,11 +1,11 @@
 import { useGetHistoryData } from '@/entities/history/api/historyApi';
 import { useGetDateMonth } from '@/entities/history/model/selectors/historySelectors';
 import { HistoryDataResponse } from '@/entities/history/model/types/historyType';
-import { Card } from '@/shared/ui'
-import { Button, Table, TableProps } from 'antd';
+import { Button, Card, Table } from '@/shared/ui';
+import { TableProps } from 'antd/es/table/InternalTable';
 import { useNavigate } from 'react-router-dom';
 
-export const HistoryTable = () => {
+const HistoryTable = () => {
     const navigate = useNavigate();
     const dateMonth = useGetDateMonth();
     const getDefaultDateMonth = () => {
@@ -79,3 +79,5 @@ export const HistoryTable = () => {
         </Card>
     );
 };
+
+export default HistoryTable;

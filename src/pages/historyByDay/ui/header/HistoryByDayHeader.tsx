@@ -1,10 +1,11 @@
+import { Button } from '@/shared/ui';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from 'antd';
+import { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const HistoryByDayHeader = ({ date }: { date: string }) => {
+const HistoryByDayHeader = ({ date }: { date: string }) => {
     const navigate = useNavigate();
     const downloadFile = () => {
         const url = `https://bazar-api.aralhub.uz/export-data/report/?date=${date}`;
@@ -28,3 +29,5 @@ export const HistoryByDayHeader = ({ date }: { date: string }) => {
         </>
     );
 };
+
+export default memo(HistoryByDayHeader);

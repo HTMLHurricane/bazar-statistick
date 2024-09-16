@@ -1,1 +1,1 @@
-export { UpdateWorkingGraphic } from './ui/UpdateWorkingGraphic';
+export { UpdateWorkingGraphic } from './ui/UpdateWorkingGraphic.async';

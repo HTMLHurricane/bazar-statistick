@@ -1,14 +1,14 @@
 import { GeneralData } from '@/entities/main';
-import { Card } from '@/shared/ui';
-import { Table, TableProps, Image } from 'antd';
-import { useState } from 'react';
+import { Card, Table, Image } from '@/shared/ui';
+import { TableProps } from 'antd';
+import { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-interface HistoryByDayLast {
+export interface HistoryByDayLast {
     data: GeneralData[] | undefined;
 }
 
-export const HistoryByDayLast = ({ data }: HistoryByDayLast) => {
+const HistoryByDayLast = ({ data }: HistoryByDayLast) => {
     const [isPreviewOpened, setIsPreviewOpened] = useState(false);
     const navigate = useNavigate();
 
@@ -71,3 +71,5 @@ export const HistoryByDayLast = ({ data }: HistoryByDayLast) => {
         </Card>
     );
 };
+
+export default memo(HistoryByDayLast);

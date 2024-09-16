@@ -1,9 +1,10 @@
 import { useUnknownActions } from '@/entities/unknown/model/slice/unknownSlice';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
-import { DatePickerProps, DatePicker, Button } from 'antd';
+import { DatePickerProps } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { DatePicker, Button } from '@/shared/ui';
 
-export const UnknownHeader = () => {
+const UnknownHeader = () => {
     const navigate = useNavigate();
     const { setDate } = useUnknownActions();
     const onChange: DatePickerProps['onChange'] = (
@@ -48,3 +49,5 @@ export const UnknownHeader = () => {
         </FlexBox>
     );
 };
+
+export default UnknownHeader;

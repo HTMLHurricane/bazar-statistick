@@ -1,21 +1,21 @@
-import { Image, Table, TableProps } from 'antd';
+import { TableProps } from 'antd';
 import { GeneralData, IFilter } from '@/entities/main';
 import {
     useGetLimit,
     useGetPage,
 } from '@/entities/main/model/selectors/mainSelectors';
 import { useMainActions } from '@/entities/main/model/slice/mainSlice';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Card } from '@/shared/ui';
+import { Card, Image, Table } from '@/shared/ui';
 
-interface LastProps {
+export interface LastProps {
     data: GeneralData[] | undefined;
     total: number | undefined;
     filter: IFilter;
 }
 
-export const Last = ({ data, filter, total }: LastProps) => {
+const Last = ({ data, filter, total }: LastProps) => {
     const limit = useGetLimit();
     const page = useGetPage();
     const { setLimit, setPage } = useMainActions();
@@ -96,3 +96,5 @@ export const Last = ({ data, filter, total }: LastProps) => {
         </Card>
     );
 };
+
+export default memo(Last);

@@ -1,9 +1,10 @@
 import { useCreateDontPay } from '@/entities/dontPay/api/dontPayApi';
 import { useMainActions } from '@/entities/main/model/slice/mainSlice';
-import { Button, Form, Input, message } from 'antd';
+import { Input, Button } from '@/shared/ui';
+import { Form, message } from 'antd';
 import { useEffect } from 'react';
 
-export const CreateDontPay = () => {
+const CreateDontPay = () => {
     const [create, { isSuccess, isLoading, isError }] = useCreateDontPay();
     const { setIsModalVisible } = useMainActions();
     const onSubmit = (data: { number: string }) => {
@@ -43,3 +44,5 @@ export const CreateDontPay = () => {
         </Form>
     );
 };
+
+export default CreateDontPay

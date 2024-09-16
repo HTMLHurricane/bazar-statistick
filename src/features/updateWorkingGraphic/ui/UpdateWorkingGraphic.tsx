@@ -4,10 +4,11 @@ import {
     updateWorkingGraphic,
     useGetWorkingGraphic,
 } from '@/entities/workGraphic/api/workGraphic';
-import { Button, Form, Input, message } from 'antd';
+import { Button, Input } from '@/shared/ui';
+import { Form, message } from 'antd';
 import { useEffect } from 'react';
 
-export const UpdateWorkingGraphic = () => {
+const UpdateWorkingGraphic = () => {
     const [form] = Form.useForm();
     const [update, { isSuccess, isLoading, isError }] = updateWorkingGraphic();
     const { data } = useGetWorkingGraphic();
@@ -68,3 +69,5 @@ export const UpdateWorkingGraphic = () => {
         </Form>
     );
 };
+
+export default UpdateWorkingGraphic;

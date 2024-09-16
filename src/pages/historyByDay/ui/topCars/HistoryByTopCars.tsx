@@ -1,14 +1,14 @@
 import { GeneralData } from '@/entities/main';
-import { Card } from '@/shared/ui';
-import { Table, Image, TableProps } from 'antd';
-import { useState } from 'react';
+import { Card, Table, Image } from '@/shared/ui';
+import { TableProps } from 'antd';
+import { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-interface TopCarsProps {
+export interface TopCarsProps {
     data: GeneralData[] | undefined;
 }
 
-export const HistoryByTopCars = ({ data }: TopCarsProps) => {
+const HistoryByTopCars = ({ data }: TopCarsProps) => {
     const [isPreviewOpened, setIsPreviewOpened] = useState(false);
     const navigate = useNavigate();
 
@@ -72,3 +72,5 @@ export const HistoryByTopCars = ({ data }: TopCarsProps) => {
         </Card>
     );
 };
+
+export default memo(HistoryByTopCars);

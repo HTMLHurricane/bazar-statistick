@@ -1,1 +1,1 @@
-export { History } from './ui/history/History';
+export { History } from './ui/history/History.async';

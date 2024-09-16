@@ -1,13 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useInfoActions } from '@/entities/info/model/slice/infoSlice';
 import { getDefaultDateMonth } from '@/shared/lib/defaultDate/defaultDate';
+import { Button, DatePicker } from '@/shared/ui';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, DatePicker } from 'antd';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export const InfoHead = () => {
+const InfoHead = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { setDateMonthInfo } = useInfoActions();
@@ -47,3 +46,5 @@ export const InfoHead = () => {
         </FlexBox>
     );
 };
+
+export default InfoHead;

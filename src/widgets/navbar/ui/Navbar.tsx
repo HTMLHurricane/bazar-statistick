@@ -3,15 +3,19 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { routeConfig } from '@/app/providers/router/routeConfig/routeConfig';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Button, Drawer, Menu, Input, List } from 'antd';
 import { TOKEN } from '@/shared/const/localstorage';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import { MenuOutlined } from '@ant-design/icons';
 import { useLogout } from '@/entities/auth/api/authApi';
 import { AllCars } from '@/entities/main/model/types/mainType';
 import { useGetAllCars } from '@/entities/main/api/mainApi';
+import { Button, Input } from '@/shared/ui';
 
-export const Navbar = memo(() => {
+const List = (await import('antd/es/list')).default;
+const Drawer = (await import('antd/es/drawer')).default;
+const Menu = (await import('antd/es/menu/menu')).default;
+
+const Navbar = memo(() => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredCars, setFilteredCars] = useState<AllCars[]>([]);
@@ -116,11 +120,6 @@ export const Navbar = memo(() => {
                                         }
                                         className="hover:bg-gray-100 p-2 cursor-pointer flex items-center"
                                     >
-                                        {/* <img
-                                            src={car.last_attendance?.image_url}
-                                            alt=""
-                                            className="w-12 h-12 mr-3"
-                                        /> */}
                                         <div className="flex-1 flex justify-between items-center">
                                             <div className="font-bold">
                                                 {car.number}
@@ -175,3 +174,5 @@ export const Navbar = memo(() => {
         </>
     );
 });
+
+export default Navbar;

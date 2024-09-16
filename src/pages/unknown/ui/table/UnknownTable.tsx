@@ -1,16 +1,17 @@
 import { UnknownCars } from '@/entities/unknown';
 import { useUnknownActions } from '@/entities/unknown/model/slice/unknownSlice';
-import { Card } from '@/shared/ui';
-import { TableProps, Image, Table } from 'antd';
+import { Card, Image, Table } from '@/shared/ui';
+import { TableProps } from 'antd';
+import { memo } from 'react';
 
-interface UnknownProps {
+export interface UnknownProps {
     data: UnknownCars[] | undefined;
     total: number | undefined;
     limit: number;
     page: number;
 }
 
-export const UnknownTable = ({ data, total, limit, page }: UnknownProps) => {
+const UnknownTable = ({ data, total, limit, page }: UnknownProps) => {
     const { setLimit, setPage } = useUnknownActions();
 
     const columns: TableProps<UnknownCars>['columns'] = [
@@ -72,3 +73,5 @@ export const UnknownTable = ({ data, total, limit, page }: UnknownProps) => {
         </Card>
     );
 };
+
+export default memo(UnknownTable);

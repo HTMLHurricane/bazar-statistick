@@ -1,16 +1,15 @@
-import { useState, useEffect, FC } from 'react';
+import { useState, useEffect, FC, memo } from 'react';
 import { Navbar } from '@/widgets/navbar';
-import { UnknownHeader } from '../header/UnknownHeader';
+import { UnknownHeader } from '../header/UnknownHeader.async';
 import {
     useGetUnknownDate,
     useGetUnknownLimit,
     useGetUnknownPage,
 } from '@/entities/unknown/model/selectors/unknownSelectors';
-import { UnknownTable } from '../table/UnknownTable';
+import { UnknownTable } from '../table/UnknownTable.async';
 import { useGetUnknownCars } from '@/entities/unknown/api/unknownApi';
 import { getDefaultDateDay } from '@/shared/lib/defaultDate/defaultDate';
-import { Count } from '@/shared/ui';
-import { Modal, Input, Button } from 'antd';  
+import { Count, Input, Button, Modal } from '@/shared/ui';
 
 interface PasswordModalProps {
     onSubmit: (password: string) => void;
@@ -34,7 +33,8 @@ const PasswordModal: FC<PasswordModalProps> = ({ onSubmit }) => {
             footer={null}
             closable={false}
         >
-            <Input.Password
+            <Input
+                type="password"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Введите пароль"
@@ -50,19 +50,18 @@ const PasswordModal: FC<PasswordModalProps> = ({ onSubmit }) => {
     );
 };
 
-export const Unknown: FC = () => {
+const Unknown: FC = () => {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-    
+
     const date = useGetUnknownDate();
     const limit = useGetUnknownLimit();
     const page = useGetUnknownPage();
     const selectedDate = date || getDefaultDateDay();
-    
-    // Типизация для данных, возвращаемых useGetUnknownCars
+
     const { data } = useGetUnknownCars(
         { limit, page, date: selectedDate },
-        { pollingInterval: 25000, refetchOnFocus: false }
+        { pollingInterval: 25000, refetchOnFocus: false },
     );
 
     useEffect(() => {
@@ -111,3 +110,5 @@ export const Unknown: FC = () => {
         </>
     );
 };
+
+export default memo(Unknown);

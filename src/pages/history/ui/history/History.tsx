@@ -1,8 +1,8 @@
 import { Navbar } from '@/widgets/navbar';
-import { HistoryHeader } from '../header/HistoryHeader';
-import { HistoryTable } from '../table/HistoryTable'
+import { HistoryHeader } from '../header/HistoryHeader.async';
+import { HistoryTable } from '../table/HistoryTable.async';
 
-export const History = () => {
+const History = () => {
     return (
         <>
             <Navbar />
@@ -13,3 +13,5 @@ export const History = () => {
         </>
     );
 };
+
+export default History;

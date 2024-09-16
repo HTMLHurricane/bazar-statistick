@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { GraphicData, IFilter } from '@/entities/main';
 import { Card } from '@/shared/ui';
+import { memo } from 'react';
 
 Chart.register(
     CategoryScale,
@@ -24,7 +25,7 @@ Chart.register(
     Filler,
 );
 
-interface PeakHoursProps {
+export interface PeakHoursProps {
     data: GraphicData[] | undefined;
     filter: IFilter;
 }
@@ -34,7 +35,7 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
         'monday',
         'tuesday',
         'wednesday',
-        'thursday', // Исправление опечатки
+        'thursday',
         'friday',
         'saturday',
         'sunday',
@@ -162,4 +163,4 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
     );
 };
 
-export default PeakHours;
+export default memo(PeakHours);

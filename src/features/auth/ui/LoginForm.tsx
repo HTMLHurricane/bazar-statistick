@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Form, FormProps, Input, message } from 'antd';
+import { Form, FormProps, message } from 'antd';
 import { TOKEN } from '@/shared/const/localstorage';
 import { useGetMeLazy, useLogin } from '@/entities/auth/api/authApi';
-import { ILoginForm } from '@/entities/auth'
+import { ILoginForm } from '@/entities/auth';
+import { Button, Input } from '@/shared/ui';
 
-export const LoginForm = () => {
+const LoginForm = () => {
     const [login, { data, isSuccess, isError, isLoading }] = useLogin();
     const [triggerGetMe] = useGetMeLazy();
     const navigate = useNavigate();
@@ -35,7 +36,9 @@ export const LoginForm = () => {
     return (
         <div className="w-full min-h-screen flex items-center justify-center px-4">
             <div className="w-full max-w-md">
-                <h1 className="text-center mb-5 text-2xl font-semibold">Авторизация</h1>
+                <h1 className="text-center mb-5 text-2xl font-semibold">
+                    Авторизация
+                </h1>
                 <Form
                     name="basic"
                     onFinish={onFinish}
@@ -70,7 +73,7 @@ export const LoginForm = () => {
                             },
                         ]}
                     >
-                        <Input.Password />
+                        <Input type="password" />
                     </Form.Item>
 
                     <Form.Item>
@@ -88,3 +91,5 @@ export const LoginForm = () => {
         </div>
     );
 };
+
+export default LoginForm;

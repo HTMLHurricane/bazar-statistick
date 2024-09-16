@@ -1,15 +1,15 @@
 import { IFilter, Top10Data } from '@/entities/main';
-import { Card } from '@/shared/ui'
-import { Table, Image, TableProps } from 'antd';
-import { useState } from 'react';
+import { Card, Table, Image } from '@/shared/ui';
+import { TableProps } from 'antd';
+import { memo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-interface TopCarsProps {
+export interface TopCarsProps {
     data: Top10Data[] | undefined;
     filter: IFilter;
 }
 
-export const TopCars = ({ data, filter }: TopCarsProps) => {
+const TopCars = ({ data, filter }: TopCarsProps) => {
     const [isPreviewOpened, setIsPreviewOpened] = useState(false);
     const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ export const TopCars = ({ data, filter }: TopCarsProps) => {
             render: (photo) => (
                 <Image
                     preview={{ onVisibleChange: setIsPreviewOpened }}
-                    width={60} // Меньший размер для мобильных устройств
+                    width={60}
                     onClick={(e) => e.stopPropagation()}
                     src={photo}
                     alt="photo"
@@ -80,9 +80,11 @@ export const TopCars = ({ data, filter }: TopCarsProps) => {
                     },
                     className: 'hover:cursor-pointer',
                 })}
-                scroll={{ x: true }} // Горизонтальный скролл
-                size="small" // Меньший размер для таблицы
+                scroll={{ x: true }}
+                size="small"
             />
         </Card>
     );
 };
+
+export default memo(TopCars);

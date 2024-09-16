@@ -3,7 +3,7 @@ import { useMainActions } from '@/entities/main/model/slice/mainSlice';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import { RadioChangeEvent, Radio } from 'antd';
 
-export const MainHead = () => {
+const MainHead = () => {
     const filter = useGetFilter();
     const { setFilter } = useMainActions();
 
@@ -29,3 +29,5 @@ export const MainHead = () => {
         </FlexBox>
     );
 };
+
+export default MainHead;

@@ -1,16 +1,17 @@
 import { faCar, faRepeat } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Card } from 'antd';
-import { useState, useEffect } from 'react';
-import CountUp from 'react-countup';
+import { useState, useEffect, lazy, memo } from 'react';
 
-interface CountProps {
+const CountUp = lazy(() => import('react-countup'));
+const Card = lazy(() => import('antd/es/card/Card'));
+
+export interface CountProps {
     count: number | undefined;
     title: string;
     flag: 'car' | 'cars';
 }
 
-export const Count = ({ count, title, flag }: CountProps) => {
+const Count = ({ count, title, flag }: CountProps) => {
     const [prevChild, setPrevChild] = useState(0);
     const [currentChild, setCurrentChild] = useState(0);
 
@@ -57,3 +58,5 @@ export const Count = ({ count, title, flag }: CountProps) => {
         </Card>
     );
 };
+
+export default memo(Count);

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Navbar } from '@/widgets/navbar';
-import { TopCars } from '../topCars/TopCars';
+import { TopCars } from '../topCars/TopCars.async';
 import PeakHours from '../peakHours/PeakHours';
-import { Last } from '../last/Last';
+import { Last } from '../last/Last.async';
 import { FlexBox } from '@/shared/ui/box/FlexBox';
 import {
     useGetFilter,
@@ -16,8 +16,8 @@ import {
 } from '@/entities/main/api/mainApi';
 import { useEffect, useState } from 'react';
 import { AttendanceResponse } from '@/entities/main';
-import { DontPay } from '../dontPay/DontPay';
-import { MainHead } from '../header/MainHead';
+import { DontPay } from '../dontPay/DontPay.async';
+import { MainHead } from '../header/MainHead.async';
 import { Count } from '@/shared/ui';
 import {
     getDefaultDateDay,
@@ -25,7 +25,7 @@ import {
     getDefaultDateWeek,
 } from '@/shared/lib/defaultDate/defaultDate';
 
-export const MainPage = () => {
+const MainPage = () => {
     const [data, setData] = useState<AttendanceResponse | undefined>(undefined);
     const limit = useGetLimit();
     const page = useGetPage();
@@ -107,3 +107,5 @@ export const MainPage = () => {
         </>
     );
 };
+
+export default MainPage;

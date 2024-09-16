@@ -1,5 +1,5 @@
 import { DontPayResponse } from '@/entities/dontPay/model/types/dontPayTypes';
-import { Button, Table, TableProps, Modal, message } from 'antd';
+import { TableProps, message } from 'antd';
 import { CreateDontPay } from '@/features/createDontPay';
 import {
     useDeleteDontPay,
@@ -10,13 +10,13 @@ import {
     useGetIsModalVisible,
     useGetIsUpdateModal,
 } from '@/entities/main/model/selectors/mainSelectors';
-import { Card, DeleteButton } from '@/shared/ui';
-import { useEffect } from 'react';
+import { Card, DeleteButton, Button, Table, Modal } from '@/shared/ui';
+import { memo, useEffect } from 'react';
 import { faPen, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UpdateWorkingGraphic } from '@/features/updateWorkingGraphic';
 
-export const DontPay = () => {
+const DontPay = () => {
     const isModalVisible = useGetIsModalVisible();
     const isUpdateModal = useGetIsUpdateModal();
     const { setIsModalVisible, setIsUpdateModal } = useMainActions();
@@ -64,7 +64,7 @@ export const DontPay = () => {
         <>
             <Card
                 title={
-                    <div className='flex items-center justify-between'>
+                    <div className="flex items-center justify-between">
                         <div>Администрация</div>
                         <Button onClick={showUpdateModal}>
                             <FontAwesomeIcon icon={faPen} /> график
@@ -101,3 +101,5 @@ export const DontPay = () => {
         </>
     );
 };
+
+export default memo(DontPay);

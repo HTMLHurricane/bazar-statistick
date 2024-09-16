@@ -1,13 +1,13 @@
 import { useGetInfoByDate } from '@/entities/infoByDate/api/infoByDateApi';
 import { CarsInfoByNumImage } from '@/entities/infoByDate/model/infoByDateType';
-import { Card } from '@/shared/ui'
+import { Card, Table, Image, Button } from '@/shared/ui';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Table, TableProps, Image, Button } from 'antd';
+import { TableProps } from 'antd';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const InfoByDateTable = () => {
+const InfoByDateTable = () => {
     const { id, date } = useParams();
     const [limit, setLimit] = useState(5);
     const [page, setPage] = useState(1);
@@ -23,7 +23,6 @@ export const InfoByDateTable = () => {
     };
 
     const columns: TableProps<CarsInfoByNumImage>['columns'] = [
-        
         {
             title: 'Время',
             dataIndex: 'time',
@@ -80,3 +79,5 @@ export const InfoByDateTable = () => {
         </Card>
     );
 };
+
+export default InfoByDateTable;

@@ -1,9 +1,8 @@
 import { Navbar } from '@/widgets/navbar';
-import { InfoHead } from '../headed/InfoHead';
-import { InfoTable } from '../table/InfoTable'
+import { InfoHead } from '../headed/InfoHead.async';
+import { InfoTable } from '../table/InfoTable.async';
 
-export const Info = () => {
-    
+const Info = () => {
     return (
         <>
             <Navbar />
@@ -14,3 +13,5 @@ export const Info = () => {
         </>
     );
 };
+
+export default Info;

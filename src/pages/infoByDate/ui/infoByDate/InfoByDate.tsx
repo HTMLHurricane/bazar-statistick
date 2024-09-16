@@ -1,8 +1,8 @@
 import { Navbar } from '@/widgets/navbar';
-import { InfoByDateTable } from '../table/InfoByDateTable';
-import { InfoByDateHeader } from '../header/InfoByDateHeader'
+import { InfoByDateTable } from '../table/InfoByDateTable.async';
+import { InfoByDateHeader } from '../header/InfoByDateHeader.async';
 
-export const InfoByDate = () => {
+const InfoByDate = () => {
     return (
         <>
             <Navbar />
@@ -13,3 +13,5 @@ export const InfoByDate = () => {
         </>
     );
 };
+
+export default InfoByDate;
