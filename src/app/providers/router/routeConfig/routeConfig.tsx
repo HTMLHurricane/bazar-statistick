@@ -7,6 +7,8 @@ import { MainPage } from '@/pages/main';
 import { NotFoundPage } from '@/pages/notFoundPage/ui';
 import { Unknown } from '@/pages/unknown';
 import { AppRoutesProps } from '@/shared/types/router';
+import { Spin } from 'antd';
+import { Suspense } from 'react';
 
 export enum AppRoutes {
     MAIN = 'main',
@@ -33,34 +35,82 @@ export const RoutePath: Record<AppRoutes, string> = {
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.MAIN]: {
         path: RoutePath.main,
-        element: <MainPage />,
+        element: (
+            <Suspense
+                fallback={
+                    <Spin className="flex justify-center items-center w-full h-screen" />
+                }
+            >
+                <MainPage />{' '}
+            </Suspense>
+        ),
         text: 'Главная',
         authOnly: true,
     },
     [AppRoutes.INFO]: {
         path: `${RoutePath.info}:id`,
-        element: <Info />,
+        element: (
+            <Suspense
+                fallback={
+                    <Spin className="flex justify-center items-center w-full h-screen" />
+                }
+            >
+                <Info />{' '}
+            </Suspense>
+        ),
         authOnly: true,
     },
     [AppRoutes.INFOBYDATE]: {
         path: `${RoutePath.info_date}:date`,
-        element: <InfoByDate />,
+        element: (
+            <Suspense
+                fallback={
+                    <Spin className="flex justify-center items-center w-full h-screen" />
+                }
+            >
+                <InfoByDate />
+            </Suspense>
+        ),
         authOnly: true,
     },
     [AppRoutes.HISTORY]: {
         path: RoutePath.history,
-        element: <History />,
+        element: (
+            <Suspense
+                fallback={
+                    <Spin className="flex justify-center items-center w-full h-screen" />
+                }
+            >
+                <History />
+            </Suspense>
+        ),
         text: 'История',
         authOnly: true,
     },
     [AppRoutes.HISTORYBYDAY]: {
         path: `${RoutePath.history_by_day}:dateDay`,
-        element: <HistoryByDay />,
+        element: (
+            <Suspense
+                fallback={
+                    <Spin className="flex justify-center items-center w-full h-screen" />
+                }
+            >
+                <HistoryByDay />
+            </Suspense>
+        ),
         authOnly: true,
     },
     [AppRoutes.LOGIN]: {
         path: RoutePath.login,
-        element: <LoginForm />,
+        element: (
+            <Suspense
+                fallback={
+                    <Spin className="flex justify-center items-center w-full h-screen" />
+                }
+            >
+                <LoginForm />
+            </Suspense>
+        ),
     },
     [AppRoutes.UNKNOWN]: {
         path: RoutePath.unknown,
