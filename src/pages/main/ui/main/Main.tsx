@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Navbar } from '@/widgets/navbar';
 import { TopCars } from '../topCars/TopCars.async';
 import PeakHours from '../peakHours/PeakHours';
 import { Last } from '../last/Last.async';
@@ -24,6 +23,7 @@ import {
     getDefaultDateMonth,
     getDefaultDateWeek,
 } from '@/shared/lib/defaultDate/defaultDate';
+import { Navbar } from '@/widgets/navbar';
 
 const MainPage = () => {
     const [data, setData] = useState<AttendanceResponse | undefined>(undefined);
@@ -62,10 +62,10 @@ const MainPage = () => {
     return (
         <>
             <Navbar />
-            <div className="container mx-auto px-4 md:px-8 lg:px-16 pb-10">
+            <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 pb-10">
                 <MainHead />
                 <FlexBox cls="flex-col md:flex-row gap-4">
-                    <div className="lg:w-1/3 lg:flex-col md:flex">
+                    <div className="w-full md:w-1/3 lg:w-1/3 flex-col md:flex">
                         <Count
                             count={data?.general_count}
                             title={`Поток машин за ${

@@ -10,10 +10,7 @@ import { useLogout } from '@/entities/auth/api/authApi';
 import { AllCars } from '@/entities/main/model/types/mainType';
 import { useGetAllCars } from '@/entities/main/api/mainApi';
 import { Button, Input } from '@/shared/ui';
-
-const List = (await import('antd/es/list')).default;
-const Drawer = (await import('antd/es/drawer')).default;
-const Menu = (await import('antd/es/menu/menu')).default;
+import { List, Drawer, Menu } from 'antd'
 
 const Navbar = memo(() => {
     const [drawerOpen, setDrawerOpen] = useState(false);

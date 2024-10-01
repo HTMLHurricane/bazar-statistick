@@ -1,9 +1,9 @@
 import { faCar, faRepeat } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, lazy, memo } from 'react';
+import Card from '../card/Card';
 
 const CountUp = lazy(() => import('react-countup'));
-const Card = lazy(() => import('antd/es/card/Card'));
 
 export interface CountProps {
     count: number | undefined;
@@ -45,7 +45,7 @@ const Count = ({ count, title, flag }: CountProps) => {
                     </span>
                 </div>
             }
-            className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full md:w-3/4 lg:w-full"
+            className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full md:w-full lg:w-full"
         >
             <div className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center py-6 md:py-8 lg:py-12 xl:py-16">
                 <CountUp

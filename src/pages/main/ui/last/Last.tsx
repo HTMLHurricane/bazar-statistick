@@ -64,7 +64,7 @@ const Last = ({ data, filter, total }: LastProps) => {
                     ? 'неделю'
                     : 'месяц'
             }`}
-            className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full md:w-3/4 lg:w-2/3"
+            className="shadow-lg rounded-lg overflow-hidden mx-auto my-4 p-4 w-full md:w-2/3 lg:w-2/3"
         >
             <Table
                 dataSource={data}
