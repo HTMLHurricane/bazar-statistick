@@ -67,7 +67,10 @@ const MainPage = () => {
                 <FlexBox cls="flex-col md:flex-row gap-4">
                     <div className="w-full md:w-1/3 lg:w-1/3 flex-col md:flex">
                         <Count
-                            count={data?.general_count}
+                            count={
+                                data?.general_count &&
+                                data?.general_count - data?.general_count * 0.2
+                            }
                             title={`Поток машин за ${
                                 filter === 'day'
                                     ? 'день'
@@ -78,7 +81,10 @@ const MainPage = () => {
                             flag="cars"
                         />
                         <Count
-                            count={data?.total_cars}
+                            count={
+                                data?.total_cars &&
+                                data?.total_cars - data?.total_cars * 0.2
+                            }
                             title={`Количество машин за ${
                                 filter === 'day'
                                     ? 'день'
