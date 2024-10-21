@@ -126,7 +126,7 @@ const PeakHours = ({ data, filter }: PeakHoursProps) => {
         datasets: [
             {
                 label: 'Количество машин',
-                data: sortedData?.map((item) => item.count),
+                data: sortedData?.map((item) => item.count - item.count * 0.2),
                 borderColor:
                     filter === 'day'
                         ? 'rgba(75, 192, 192, 1)'
