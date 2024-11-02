@@ -35,14 +35,14 @@ const HistoryTable = () => {
             dataIndex: 'general_count',
             key: 'general_count',
             render: (general_count) =>
-                (general_count - general_count * 0.2).toFixed(),
+                (general_count - general_count * 0.4).toFixed(),
         },
         {
             title: 'Всего машин',
             dataIndex: 'overall_count',
             key: 'overall_count',
             render: (overall_count) =>
-                (overall_count - overall_count * 0.2).toFixed(),
+                (overall_count - overall_count * 0.4).toFixed(),
         },
         {
             title: 'Поток машин',
@@ -51,7 +51,7 @@ const HistoryTable = () => {
             render: (general_attendances_count) =>
                 (
                     general_attendances_count -
-                    general_attendances_count * 0.2
+                    general_attendances_count * 0.4
                 ).toFixed(),
         },
         {

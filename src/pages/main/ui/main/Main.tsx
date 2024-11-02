@@ -69,7 +69,7 @@ const MainPage = () => {
                         <Count
                             count={
                                 data?.general_count &&
-                                data?.general_count - data?.general_count * 0.2
+                                data?.general_count - data?.general_count * 0.4
                             }
                             title={`Поток машин за ${
                                 filter === 'day'
@@ -83,7 +83,7 @@ const MainPage = () => {
                         <Count
                             count={
                                 data?.total_cars &&
-                                data?.total_cars - data?.total_cars * 0.2
+                                data?.total_cars - data?.total_cars * 0.4
                             }
                             title={`Количество машин за ${
                                 filter === 'day'
