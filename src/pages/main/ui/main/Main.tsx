@@ -69,6 +69,20 @@ const MainPage = () => {
                         <Count
                             count={
                                 data?.general_count &&
+                                data?.general_count * 800
+                            }
+                            title={`Общая сумма за ${
+                                filter === 'day'
+                                    ? 'день'
+                                    : filter === 'week'
+                                        ? 'неделю'
+                                        : 'месяц'
+                            }`}
+                            flag="amount"
+                        />
+                        <Count
+                            count={
+                                data?.general_count &&
                                 data?.general_count
                             }
                             title={`Поток машин за ${

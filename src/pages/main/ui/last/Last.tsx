@@ -91,7 +91,7 @@ const Last = ({ data, filter, total }: LastProps) => {
                     className: 'hover:cursor-pointer',
                 })}
                 className="w-full"
-                scroll={{ y: 450 }}
+                scroll={{ y: 750 }}
             />
         </Card>
     );

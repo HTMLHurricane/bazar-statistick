@@ -1,4 +1,4 @@
-import { faCar, faRepeat } from '@fortawesome/free-solid-svg-icons';
+import { faCar, faRepeat, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useEffect, lazy, memo } from 'react';
 import Card from '../card/Card';
@@ -8,7 +8,7 @@ const CountUp = lazy(() => import('react-countup'));
 export interface CountProps {
     count: number | undefined;
     title: string;
-    flag: 'car' | 'cars';
+    flag: 'car' | 'cars' | 'amount' ;
 }
 
 const Count = ({ count, title, flag }: CountProps) => {
@@ -33,6 +33,14 @@ const Count = ({ count, title, flag }: CountProps) => {
                                 <FontAwesomeIcon icon={faRepeat} />
                                 <FontAwesomeIcon
                                     icon={faCar}
+                                    className="text-xl text-blue-500 pl-2"
+                                />
+                            </>
+                        ) : flag === 'amount' ? (
+                            <>
+                                <FontAwesomeIcon icon={faRepeat} />
+                                <FontAwesomeIcon
+                                    icon={faMoneyBill}
                                     className="text-xl text-blue-500 pl-2"
                                 />
                             </>
